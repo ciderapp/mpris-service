@@ -4,9 +4,13 @@ let dbus = require('dbus-next');
 let Variant = dbus.Variant;
 let types = require('./types');
 
-let {
-  property, method, signal, DBusError,
-  ACCESS_READ, ACCESS_WRITE, ACCESS_READWRITE
+const {
+  property,
+  method,
+  signal,
+  ACCESS_READ,
+  ACCESS_WRITE,
+  ACCESS_READWRITE
 } = dbus.interface;
 
 class PlaylistsInterface extends MprisInterface {

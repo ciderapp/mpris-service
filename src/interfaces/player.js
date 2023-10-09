@@ -3,10 +3,15 @@ const MprisInterface = require('./mpris-interface');
 const Variant = dbus.Variant;
 const constants = require('../constants');
 
-let {
-  property, method, signal, DBusError,
-  ACCESS_READ, ACCESS_WRITE, ACCESS_READWRITE
+const {
+  property,
+  method,
+  signal,
+  ACCESS_READ,
+  ACCESS_WRITE,
+  ACCESS_READWRITE
 } = dbus.interface;
+const DBusError = dbus.DBusError;
 
 class PlayerInterface extends MprisInterface {
   constructor(player) {

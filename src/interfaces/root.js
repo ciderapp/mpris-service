@@ -2,9 +2,13 @@ let MprisInterface = require('./mpris-interface');
 let dbus = require('dbus-next');
 let Variant = dbus.Variant;
 
-let {
-  property, method, signal, DBusError,
-  ACCESS_READ, ACCESS_WRITE, ACCESS_READWRITE
+const {
+  property,
+  method,
+  signal,
+  ACCESS_READ,
+  ACCESS_WRITE,
+  ACCESS_READWRITE
 } = dbus.interface;
 
 class RootInterface extends MprisInterface {

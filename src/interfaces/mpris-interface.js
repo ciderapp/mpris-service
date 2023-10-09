@@ -14,7 +14,7 @@ class MprisInterface extends Interface {
 
   _setPropertyInternal(property, valueDbus) {
     // nothing is currently settable internally that needs conversion to plain
-    this.player.emit(property[0].toLowerCase() + property.substr(1), valueDbus);
+    this.player.emit(property[0].toLowerCase() + property.substring(1), valueDbus);
   }
 
   setProperty(property, valuePlain) {

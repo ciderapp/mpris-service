@@ -1,4 +1,4 @@
-let loggingEnabled = (process.env.MPRIS_SERVICE_DEBUG !== undefined && process.env.MPRIS_SERVICE_DEBUG !== '0');
+const loggingEnabled = (process.env.MPRIS_SERVICE_DEBUG !== undefined && process.env.MPRIS_SERVICE_DEBUG !== '0');
 
 module.exports.debug = function(message) {
   if (loggingEnabled) {

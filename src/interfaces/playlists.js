@@ -1,8 +1,8 @@
 // TODO proper import
-let MprisInterface = require('./mpris-interface');
-let dbus = require('dbus-next');
-let Variant = dbus.Variant;
-let types = require('./types');
+const MprisInterface = require('./mpris-interface');
+const dbus = require('dbus-next');
+const Variant = dbus.Variant;
+const types = require('./types');
 
 const {
   property,

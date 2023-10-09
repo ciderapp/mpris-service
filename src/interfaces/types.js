@@ -1,5 +1,5 @@
-let Variant = require('dbus-next').Variant;
-let logging = require('../logging');
+const Variant = require('dbus-next').Variant;
+const logging = require('../logging');
 
 function guessMetadataSignature(key, value) {
   if (key === 'mpris:trackid') {

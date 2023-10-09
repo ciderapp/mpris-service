@@ -1,6 +1,6 @@
-let MprisInterface = require('./mpris-interface');
-let dbus = require('dbus-next');
-let Variant = dbus.Variant;
+const MprisInterface = require('./mpris-interface');
+const dbus = require('dbus-next');
+const Variant = dbus.Variant;
 
 const {
   property,

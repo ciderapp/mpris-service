@@ -2,7 +2,6 @@ jest.setTimeout(1e4);
 const dbus = require('dbus-next');
 const Variant = dbus.Variant;
 const Player = require('../dist');
-const JSBI = require('jsbi');
 
 const DBusError = dbus.DBusError;
 
@@ -204,7 +203,7 @@ test('position specific properties, methods, and signals should work', async () 
 
   // position defaults to always being 0
   let position = await props.Get(PLAYER_IFACE, 'Position');
-  expect(position).toEqual(new Variant('x', JSBI.BigInt(0)));
+  expect(position).toEqual(new Variant('x', BigInt(0)));
 
   // when the getter is set, it should return what the getter returns
   player.getPosition = function() {
@@ -212,7 +211,7 @@ test('position specific properties, methods, and signals should work', async () 
   }
 
   position = await props.Get(PLAYER_IFACE, 'Position');
-  expect(position).toEqual(new Variant('x', JSBI.BigInt(99)));
+  expect(position).toEqual(new Variant('x', BigInt(99)));
 
   // Seek
   let cb = jest.fn();
@@ -230,5 +229,5 @@ test('position specific properties, methods, and signals should work', async () 
   playerIface.once('Seeked', cb);
   player.seeked(200);
   await peer.Ping();
-  expect(cb).toHaveBeenCalledWith(JSBI.BigInt(200));
+  expect(cb).toHaveBeenCalledWith(BigInt(200));
 });

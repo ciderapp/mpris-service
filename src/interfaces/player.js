@@ -1,7 +1,6 @@
 const dbus = require('dbus-next');
 const MprisInterface = require('./mpris-interface');
 const Variant = dbus.Variant;
-const JSBI = require('jsbi');
 const constants = require('../constants');
 
 let {
@@ -173,7 +172,7 @@ class PlayerInterface extends MprisInterface {
   @method({inSignature: 'x'})
   Seek(offset) {
     // XXX overflow
-    offset = JSBI.toNumber(offset);
+    offset = Number(offset);
     this.player.emit('seek', offset);
   }
 
@@ -182,7 +181,7 @@ class PlayerInterface extends MprisInterface {
     let e = {
       trackId: trackId,
       // XXX overflow
-      position: JSBI.toNumber(position)
+      position: Number(position)
     };
     this.player.emit('position', e);
   }

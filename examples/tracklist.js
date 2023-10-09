@@ -1,6 +1,6 @@
 var Player = require('../dist');
 
-var player = Player({
+var player = new Player({
 	name: 'nodejs',
 	identity: 'Node.js media player',
 	supportedUriSchemes: ['file'],

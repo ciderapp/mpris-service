@@ -10,7 +10,7 @@ function errorHandler(err) {
   initErrors.push(err);
 }
 
-let player1 = Player({
+let player1 = new Player({
   name: playerName,
   identity: 'Node.js media player',
   supportedUriSchemes: ['file'],
@@ -20,7 +20,7 @@ let player1 = Player({
 
 player1.on('error', errorHandler);
 
-let player2 = Player({
+let player2 = new Player({
   name: playerName,
   identity: 'Node.js media player',
   supportedUriSchemes: ['file'],

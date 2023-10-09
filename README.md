@@ -11,7 +11,7 @@ Node.js implementation for the MPRIS D-Bus Interface Specification to create a m
 ```js
 var Player = require('mpris-service');
 
-var player = Player({
+var player = new Player({
 	name: 'nodejs',
 	identity: 'Node.js media player',
 	supportedUriSchemes: ['file'],

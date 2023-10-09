@@ -110,7 +110,7 @@ test('setting a playlist on the player works', async () => {
     PlaylistCount: new Variant('u', 4)
   }, []);
 
-  for (playlist of player.playlists) {
+  for (const playlist of player.playlists) {
     expect(playlistChangedCb).toHaveBeenCalledWith([
       playlist.Id,
       playlist.Name,

@@ -10,7 +10,7 @@ let lcFirst = (str) => {
   return str.charAt(0).toLowerCase() + str.slice(1);
 };
 
-var player = new Player({
+const player = new Player({
   name: 'roottest',
   identity: 'Node.js media player',
   supportedUriSchemes: ['file'],

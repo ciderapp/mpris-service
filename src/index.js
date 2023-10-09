@@ -154,16 +154,16 @@ class Player extends EventEmitter {
    * @property {String} loopStatus - The current loop/repeat status. May be "None", "Track", or "Playlist".
    * @property {Boolean} shuffle - Whether the player is shuffling.
    * @property {Object} metadata - The metadata of the current element. If there is a current track, this must have a "mpris:trackid" entry (of D-Bus type "o") at the very least, which contains a D-Bus path that uniquely identifies this track.
-   * @property {Double} volume - The volume level.
+   * @property {Number} volume - The volume level. (Double)
    * @property {Boolean} canControl - Whether the media player may be controlled over this interface.
    * @property {Boolean} canPause - Whether playback can be paused using Pause or PlayPause.
    * @property {Boolean} canPlay - Whether playback can be started using Play or PlayPause.
    * @property {Boolean} canSeek - Whether the client can control the playback position using Seek and SetPosition.
    * @property {Boolean} canGoNext - Whether the client can call the Next method on this interface and expect the current track to change.
    * @property {Boolean} canGoPrevious - Whether the client can call the Previous method on this interface and expect the current track to change.
-   * @property {Double} rate - The current playback rate.
-   * @property {Double} minimumRate - The minimum value which the Rate property can take.
-   * @property {Double} maximumRate - The maximum value which the Rate property can take.
+   * @property {Number} rate - The current playback rate. (Double)
+   * @property {Number} minimumRate - The minimum value which the Rate property can take. (Double)
+   * @property {Number} maximumRate - The maximum value which the Rate property can take. (Double)
    * @property {Array} playlists - The current playlists set by {@link Player#setPlaylists}. (Not a DBus property).
    * @property {String} activePlaylist - The id of the currently-active playlist.
    */
@@ -306,7 +306,7 @@ class Player extends EventEmitter {
    *
    * @name Player#getPosition
    * @function
-   * @returns {Integer} - The current position of the player in microseconds.
+   * @returns {Number} - The current position of the player in microseconds. (Integer)
    */
   getPosition() {
     return 0;
@@ -317,7 +317,7 @@ class Player extends EventEmitter {
    *
    * @name Player#seeked
    * @function
-   * @param {Integer} position - The position in microseconds.
+   * @param {Number} position - The position in microseconds. (Integer)
    */
   seeked(position) {
     let seekTo = Math.floor(position || 0);

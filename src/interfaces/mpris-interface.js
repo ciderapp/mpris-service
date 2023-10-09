@@ -1,19 +1,10 @@
 const dbus = require('dbus-next');
-const Variant = dbus.Variant;
 const types = require('./types');
 const deepEqual = require('deep-equal');
 const constants = require('../constants');
 const logging = require('../logging');
 
-const {
-  Interface,
-  property,
-  method,
-  signal,
-  ACCESS_READ,
-  ACCESS_WRITE,
-  ACCESS_READWRITE
-} = dbus.interface;
+const { Interface } = dbus.interface;
 
 class MprisInterface extends Interface {
   constructor(name, player) {
@@ -46,9 +37,9 @@ class MprisInterface extends Interface {
     if (!deepEqual(this[`_${property}`], valueDbus)) {
       this[`_${property}`] = valueDbus;
 
-      if (property == 'LoopStatus' && !constants.isLoopStatusValid(valuePlain)) {
+      if (property === 'LoopStatus' && !constants.isLoopStatusValid(valuePlain)) {
         logging.warn(`setting player loop status to an invalid value: ${valuePlain}`);
-      } else if (property == 'PlaybackStatus' && !constants.isPlaybackStatusValid(valuePlain)) {
+      } else if (property === 'PlaybackStatus' && !constants.isPlaybackStatusValid(valuePlain)) {
         logging.warn(`setting player playback status to an invalid value: ${valuePlain}`);
       } else {
         let changedProperties = {};

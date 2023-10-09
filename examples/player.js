@@ -1,6 +1,6 @@
-var Player = require('../dist');
+const Player = require('../dist');
 
-var player = new Player({
+const player = new Player({
 	name: 'nodejs',
 	identity: 'Node.js media player',
 	supportedUriSchemes: ['file'],
@@ -14,7 +14,7 @@ player.getPosition = function() {
 }
 
 // Events
-var events = ['raise', 'quit', 'next', 'previous', 'pause', 'playpause', 'stop', 'play', 'seek', 'position', 'open', 'volume', 'loopStatus', 'shuffle'];
+const events = ['raise', 'quit', 'next', 'previous', 'pause', 'playpause', 'stop', 'play', 'seek', 'position', 'open', 'volume', 'loopStatus', 'shuffle'];
 events.forEach(function (eventName) {
 	player.on(eventName, function () {
 		console.log('Event:', eventName, arguments);

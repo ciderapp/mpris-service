@@ -1,15 +1,13 @@
 const dbus = require('dbus-next');
 const MprisInterface = require('./mpris-interface');
-const Variant = dbus.Variant;
+
 const constants = require('../constants');
 
 const {
   property,
   method,
   signal,
-  ACCESS_READ,
-  ACCESS_WRITE,
-  ACCESS_READWRITE
+  ACCESS_READ
 } = dbus.interface;
 const DBusError = dbus.DBusError;
 

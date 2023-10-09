@@ -1,6 +1,6 @@
-var Player = require('..');
+const Player = require('..');
 
-var player = new Player({
+const player = new Player({
 	name: 'nodejs',
 	identity: 'Node.js media player',
 	supportedUriSchemes: ['file'],

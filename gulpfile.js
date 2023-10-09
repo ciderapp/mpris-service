@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const babel = require('gulp-babel');
 const sourcemaps = require('gulp-sourcemaps');
-var path = require('path');
+const path = require('path');
 
 function handleError(error) {
   console.log(error.toString());

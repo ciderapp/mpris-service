@@ -1,6 +1,6 @@
-var Player = require('../dist');
+const Player = require('../dist');
 
-var player = new Player({
+const player = new Player({
 	name: 'nodejs',
 	identity: 'Node.js media player',
 	supportedUriSchemes: ['file'],
@@ -9,7 +9,7 @@ var player = new Player({
 });
 
 // Events
-var events = ['addTrack', 'removeTrack', 'goTo'];
+const events = ['addTrack', 'removeTrack', 'goTo'];
 events.forEach(function (eventName) {
 	player.on(eventName, function () {
 		console.log('Event:', eventName, arguments);

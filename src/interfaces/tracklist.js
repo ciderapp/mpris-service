@@ -1,15 +1,12 @@
 const MprisInterface = require('./mpris-interface');
 const dbus = require('dbus-next');
-const Variant = dbus.Variant;
 const types = require('./types');
 
 const {
   property,
   method,
   signal,
-  ACCESS_READ,
-  ACCESS_WRITE,
-  ACCESS_READWRITE
+  ACCESS_READ
 } = dbus.interface;
 
 class TracklistInterface extends MprisInterface {

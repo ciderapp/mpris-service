@@ -20,7 +20,7 @@
     "player",
     "dbus"
   ],
-  "author": "emersion",
+  "author": "JellyBrick <shlee1503@naver.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/dbusjs/mpris-service/issues"

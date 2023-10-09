@@ -58,6 +58,7 @@ test('setting properties on the player should show up on dbus and raise a signal
 
   let cb = jest.fn();
   props.on('PropertiesChanged', cb);
+  let changed;
 
   // string array props
   let stringArrayProps = [ 'SupportedMimeTypes', 'SupportedUriSchemes' ];
@@ -68,7 +69,7 @@ test('setting properties on the player should show up on dbus and raise a signal
     let newValue = ['foo', 'bar'];
     player[playerName] = newValue;
     await peer.Ping();
-    let changed = {};
+    changed = {};
     changed[name] = new Variant('as', newValue);
     expect(cb).toHaveBeenLastCalledWith(ROOT_IFACE, changed, []);
   }

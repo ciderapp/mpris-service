@@ -106,18 +106,13 @@ type Track = {
     'xesam:artist': string;
 }
 
-type PlaybackStatus =
-  | "PLAYBACK_STATUS_PLAYING"
-  | "PLAYBACK_STATUS_PAUSED"
-  | "PLAYBACK_STATUS_STOPPED";
-
 declare class Player {
   constructor(options: PlayerOptions);
 
   /**
    * The current playback status.
    */
-  playbackStatus: PlaybackStatus;
+  playbackStatus: 'Playing' | 'Paused' | 'Stopped';
 
   /**
    * The status of the loop

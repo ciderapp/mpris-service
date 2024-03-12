@@ -6,23 +6,90 @@ declare interface PlayerOptions {
   supportedInterfaces: string[];
 }
 
-type Events = {
-  quit: void;
+interface Events {
+
+  /**
+   * Brings the media player's user interface to the front using any appropriate mechanism available.
+   */
   raise: void;
-  activatePlaylist: string;
+
+  /**
+   * Causes the media player to stop running.
+   */
+  quit: void;
+
+  /**
+   * Skips to the next track in the tracklist
+   */
   next: void;
+
+
+  /**
+   * Skips to the previous track in the tracklist.
+   */
   previous: void;
+
+  /**
+   * Pauses playback.
+   */
   pause: void;
-  playpause: void;
+
+  /**
+   * Pauses playback.  If playback is already paused, resumes playback. If playback is stopped, starts playback.
+   */
+  playPause: void;
+
+  /**
+   * Stops playback.
+   */
   stop: void;
+
+  /**
+   * Starts or resumes playback.
+   */
   play: void;
-  seek: number;
-  position: number;
-  open: string;
-  volume: number;
-  loopStatus: string;
-  shuffle: boolean;
-};
+
+  /**
+   * Seeks forward in the current track by the specified number of microseconds. With event data `offset`.
+   */
+  seek: { offset: number };
+
+  /**
+   * Sets the current track position in microseconds. With event data `{ trackId, position }`.
+   */
+  position: { trackId: string, position: number }
+
+  /**
+   * Opens the Uri given as an argument. With event data `{ uri }`.
+   */
+  open: { uri: string };
+
+  /**
+   * Sets the volume of the player. With event data `volume` (between 0.0 and 1.0).
+   */
+  volume: { volume: number }
+
+  /**
+   * Sets whether shuffle is enabled on the player. With event data `shuffleStatus` (boolean).
+   */
+  shuffle: { shuffleStatus: boolean };
+
+  /**
+   * Sets the playback rate of the player. A value of 1.0 is the normal rate. With event data `rate`.
+   */
+  rate: { rate: number };
+
+  /**
+   * Sets the loop status of the player to either 'None', 'Track', or 'Playlist'. With event data `loopStatus`.
+   */
+  loopStatus: { loopStatus: 'None' | 'Track' | 'Playlist' }
+
+  /**
+   * Starts playing the given playlist. With event data `playlistId`.
+   */
+  activatePlaylist: { playlistId: string };
+
+}
 
 type Playlist = {
   Id: string;
@@ -136,8 +203,17 @@ declare class Player {
    * Clients can request to set position using the `Seek` and `SetPosition`
    * methods of the `org.mpris.MediaPlayer2.Player` interface. These requests are
    * implemented as events on the Player similar to the other requests.
+   * 
+   * 
    */
   seek(position: number): void;
+
+  /**
+   * Seek to a position in the player
+   * 
+   * @param position - positionInMicroseconds
+   */
+  seeked(position: number): void;
 
   /**
    * Get the current position
@@ -178,7 +254,7 @@ declare class Player {
    * @param event The event to listen to
    * @param listener The listener to call when the event is emitted
    */
-  on(event: keyof Events, listener: (arg: Events[keyof Events]) => void): void;
+  on<T extends keyof Events>(event: T, listener: (data: Events[T]) => void): void;
 }
 
 declare class TrackList {

@@ -37,7 +37,7 @@ interface Events {
   /**
    * Pauses playback.  If playback is already paused, resumes playback. If playback is stopped, starts playback.
    */
-  playPause: void;
+  playpause: void;
 
   /**
    * Stops playback.
@@ -52,7 +52,7 @@ interface Events {
   /**
    * Seeks forward in the current track by the specified number of microseconds. With event data `offset`.
    */
-  seek: { offset: number };
+  seek: number;
 
   /**
    * Sets the current track position in microseconds. With event data `{ trackId, position }`.
@@ -62,27 +62,27 @@ interface Events {
   /**
    * Opens the Uri given as an argument. With event data `{ uri }`.
    */
-  open: { uri: string };
+  open: string;
 
   /**
    * Sets the volume of the player. With event data `volume` (between 0.0 and 1.0).
    */
-  volume: { volume: number }
+  volume: number
 
   /**
    * Sets whether shuffle is enabled on the player. With event data `shuffleStatus` (boolean).
    */
-  shuffle: { shuffleStatus: boolean };
+  shuffle: boolean;
 
   /**
    * Sets the playback rate of the player. A value of 1.0 is the normal rate. With event data `rate`.
    */
-  rate: { rate: number };
+  rate: number;
 
   /**
    * Sets the loop status of the player to either 'None', 'Track', or 'Playlist'. With event data `loopStatus`.
    */
-  loopStatus: { loopStatus: 'None' | 'Track' | 'Playlist' }
+  loopStatus: 'None' | 'Track' | 'Playlist'
 
   /**
    * Starts playing the given playlist. With event data `playlistId`.

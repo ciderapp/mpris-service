@@ -8,7 +8,7 @@ test:
 	. /root/.nvm/nvm.sh ; \
 	for v in v6.17.1 v14.16.0 ; do \
 		nvm use $$v ; \
-		PYTHON=python2 npm install ; \
-		PYTHON=python2 npm rebuild ; \
-		dbus-run-session npm run test ; \
+		PYTHON=python2 pnpm install ; \
+		PYTHON=python2 pnpm rebuild ; \
+		dbus-run-session pnpm run test ; \
 	done

@@ -24,7 +24,7 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | b
     for v in v6.17.1 v14.16.0; do \
         nvm install $v; \
     done ; \
-    npm install
+    pnpm install
 
 ADD . /app
 

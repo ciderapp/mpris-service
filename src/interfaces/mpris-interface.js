@@ -1,4 +1,4 @@
-const dbus = require('dbus-next');
+const dbus = require('@jellybrick/dbus-next');
 const types = require('./types');
 const deepEqual = require('deep-equal');
 const constants = require('../constants');

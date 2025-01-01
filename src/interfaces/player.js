@@ -1,4 +1,4 @@
-const dbus = require('dbus-next');
+const dbus = require('@jellybrick/dbus-next');
 const MprisInterface = require('./mpris-interface');
 
 const constants = require('../constants');

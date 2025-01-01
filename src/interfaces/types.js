@@ -1,4 +1,4 @@
-const Variant = require('dbus-next').Variant;
+const Variant = require('@jellybrick/dbus-next').Variant;
 const logging = require('../logging');
 
 function guessMetadataSignature(key, value) {

@@ -1,6 +1,6 @@
 // TODO proper import
 const MprisInterface = require('./mpris-interface');
-const dbus = require('dbus-next');
+const dbus = require('@jellybrick/dbus-next');
 
 const types = require('./types');
 

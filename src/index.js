@@ -2,7 +2,7 @@ require('source-map-support').install();
 
 const { EventEmitter } = require('events');
 
-const dbus = require('dbus-next');
+const dbus = require('@jellybrick/dbus-next');
 const PlayerInterface = require('./interfaces/player');
 const RootInterface = require('./interfaces/root');
 const PlaylistsInterface = require('./interfaces/playlists');

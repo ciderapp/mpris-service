@@ -21,10 +21,9 @@ interface Events {
   quit: void;
 
   /**
-   * Skips to the next track in the tracklist
+   * Skips to the next track in the tracklist.
    */
   next: void;
-
 
   /**
    * Skips to the previous track in the tracklist.
@@ -37,7 +36,7 @@ interface Events {
   pause: void;
 
   /**
-   * Pauses playback.  If playback is already paused, resumes playback. If playback is stopped, starts playback.
+   * Pauses playback. If playback is already paused, resumes playback. If playback is stopped, starts playback.
    */
   playpause: void;
 
@@ -59,7 +58,7 @@ interface Events {
   /**
    * Sets the current track position in microseconds. With event data `{ trackId, position }`.
    */
-  position: { trackId: string, position: number }
+  position: { trackId: string, position: number };
 
   /**
    * Opens the Uri given as an argument. With event data `{ uri }`.
@@ -69,7 +68,7 @@ interface Events {
   /**
    * Sets the volume of the player. With event data `volume` (between 0.0 and 1.0).
    */
-  volume: number
+  volume: number;
 
   /**
    * Sets whether shuffle is enabled on the player. With event data `shuffleStatus` (boolean).
@@ -84,7 +83,7 @@ interface Events {
   /**
    * Sets the loop status of the player to either 'None', 'Track', or 'Playlist'. With event data `loopStatus`.
    */
-  loopStatus: 'None' | 'Track' | 'Playlist'
+  loopStatus: 'None' | 'Track' | 'Playlist';
 
   /**
    * Starts playing the given playlist. With event data `playlistId`.
@@ -105,11 +104,56 @@ type Track = {
     'mpris:artUrl': string;
     'xesam:title': string;
     'xesam:album': string;
-    'xesam:artist': string;
+    'xesam:artist': string[];
 }
 
 declare class Player {
   constructor(options: PlayerOptions);
+
+  /**
+   * A friendly name to identify the media player to users.
+   */
+  identity: string;
+
+  /**
+   * Whether the media player is occupying the fullscreen.
+   */
+  fullscreen: boolean;
+
+  /**
+   * The URI schemes supported by the media player.
+   */
+  supportedUriSchemes: string[];
+
+  /**
+   * The mime-types supported by the media player.
+   */
+  supportedMimeTypes: string[];
+
+  /**
+   * Whether the player can quit.
+   */
+  canQuit: boolean;
+
+  /**
+   * Whether the player can raise.
+   */
+  canRaise: boolean;
+
+  /**
+   * Whether the player can be set to fullscreen.
+   */
+  canSetFullscreen: boolean;
+
+  /**
+   * Indicates whether the /org/mpris/MediaPlayer2 object implements the org.mpris.MediaPlayer2.TrackList interface.
+   */
+  hasTrackList: boolean;
+
+  /**
+   * The basename of an installed .desktop file which complies with the Desktop entry specification, with the ".desktop" extension stripped.
+   */
+  desktopEntry: string;
 
   /**
    * The current playback status.
@@ -119,25 +163,83 @@ declare class Player {
   /**
    * The status of the loop
    */
-  loopStatus: string;
+  loopStatus: 'None' | 'Track' | 'Playlist';
 
   /**
-   * The playback rate.
-   */
-  rate: number;
-
-  /**
-   * The current shuffle status.
+   * Whether the player is shuffling.
    */
   shuffle: boolean;
 
   /**
    * The current volume.
+   * The volume level. This is a double value between 0.0 and 1.0 (both inclusive), with 0.0 being the minimum and 1.0 being the maximum volume.
+   * (Double)
    */
   volume: number;
 
   /**
-   * Media player metadata.
+   * Whether the media player may be controlled over this interface.
+   */
+  canControl: boolean;
+
+  /**
+   * Whether playback can be paused using Pause or PlayPause.
+   */
+  canPause: boolean;
+
+  /**
+   * Whether playback can be started using Play or PlayPause.
+   */
+  canPlay: boolean;
+
+  /**
+   * Whether the client can control the playback position using Seek and SetPosition.
+   */
+  canSeek: boolean;
+
+  /**
+   * Whether the client can call the Next method on this interface and expect the current track to change.
+   */
+  canGoNext: boolean;
+
+  /**
+   * Whether the client can call the Previous method on this interface and expect the current track to change.
+   */
+  canGoPrevious: boolean;
+
+  /**
+   * The current playback rate. (Double)
+   */
+  rate: number;
+
+  /**
+   * The minimum value which the Rate property can take. (Double)
+   */
+  minimumRate: number;
+
+  /**
+   * The maximum value which the Rate property can take. (Double)
+   */
+  maximumRate: number;
+
+  /**
+   * The current playlists set by {@link Player#setPlaylists}. (Not a DBus property).
+   */
+  playlists: Playlist[];
+
+  /**
+   * The id of the currently-active playlist.
+   */
+  activePlaylist: string;
+
+  /**
+   * The can edit track list status.
+   */
+  tracks: Track[];
+
+  /**
+   * The metadata of the current element. 
+   * If there is a current track, this must have a "mpris:trackid" entry (of D-Bus type "o") at the very least, which contains a D-Bus path that uniquely identifies this track.
    * @see http://www.freedesktop.org/wiki/Specifications/mpris-spec/metadata/
    */
   metadata: {
@@ -150,50 +252,6 @@ declare class Player {
     "xesam:genre"?: string[];
   };
 
-  /**
-   * The minimum rate.
-   */
-  minimumRate: number;
-
-  /**
-   * The maximum rate.
-   */
-  maximumRate: number;
-
-  /**
-   * The can go next status.
-   */
-  canGoNext: boolean;
-
-  /**
-   * The can go previous status.
-   */
-  canGoPrevious: boolean;
-
-  /**
-   * The can play status.
-   */
-  canPlay: boolean;
-
-  /**
-   * The can pause status.
-   */
-  canPause: boolean;
-
-  /**
-   * The can seek status.
-   */
-  canSeek: boolean;
-
-  /**
-   * The can control status.
-   */
-  canControl: boolean;
-
-  /**
-   * The can edit track list status.
-   */
-  tracks: Track[];
 
   /**
    * Seek to a position

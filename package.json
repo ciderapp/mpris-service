@@ -9,8 +9,7 @@
     "coverage": "gulp && dbus-run-session -- jest --coverage",
     "build": "gulp",
     "doc": "jsdoc --verbose -c jsdoc.conf --readme README.md --package package.json src/index.js -d doc",
-    "prepublish": "gulp",
-    "postinstall": "gulp"
+    "prepublish": "gulp"
   },
   "repository": {
     "type": "git",
